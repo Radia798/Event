@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-6">Organizer Dashboard</h1>
+
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white p-4 rounded shadow cursor-pointer hover:bg-gray-50" onclick="showStat('total')">
+        <p class="text-gray-500">Total Participants</p>
+        <p class="text-2xl font-bold">{{ total_participants }}</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow cursor-pointer hover:bg-gray-50" onclick="showStat('events')">
+        <p class="text-gray-500">Total Events</p>
+        <p class="text-2xl font-bold">{{ total_events }}</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow cursor-pointer hover:bg-gray-50" onclick="showStat('upcoming')">
+        <p class="text-gray-500">Upcoming Events</p>
+        <p class="text-2xl font-bold">{{ upcoming_events }}</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow cursor-pointer hover:bg-gray-50" onclick="showStat('past')">
+        <p class="text-gray-500">Past Events</p>
+        <p class="text-2xl font-bold">{{ past_events }}</p>
+    </div>
+</div>
+
+<!-- Today's Events -->
+<h2 class="text-2xl font-bold mb-4">Today's Events</h2>
+<ul class="bg-white p-4 rounded shadow space-y-2">
+    {% for event in todays_events %}
+    <li>{{ event.name }} ({{ event.time }}) - {{ event.category.name }}</li>
+    {% empty %}
+    <li>No events today.</li>
+    {% endfor %}
+</ul>
+
+<script>
+function showStat(type) {
+    alert("Interactive stats: " + type + " clicked! You can replace this with dynamic filtering.");
+}
+</script>
+
+{% endblock %}

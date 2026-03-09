@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-6">{% if form.instance.pk %}Update Event{% else %}Add Event{% endif %}</h1>
+
+<form method="POST" class="bg-white p-6 rounded shadow space-y-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">{% if form.instance.pk %}Update{% else %}Add{% endif %}</button>
+</form>
+
+{% endblock %}

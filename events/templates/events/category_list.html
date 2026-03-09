@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">Categories</h1>
+<ul class="space-y-2">
+  {% for category in categories %}
+    <li class="p-4 bg-white shadow rounded hover:bg-gray-50">
+      <a href="{% url 'category-detail' category.pk %}" class="text-blue-600 font-semibold">
+        {{ category.name }}
+      </a>
+    </li>
+  {% empty %}
+    <li>No categories found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

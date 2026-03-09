@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+
+# Env
+env/
+venv/
+*.env
+
+# Django
+db.sqlite3
+/staticfiles/
+media/
+
+# Node / Tailwind
+node_modules/
+theme/static_src/node_modules/

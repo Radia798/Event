@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">Participants</h1>
+
+<table class="min-w-full bg-white shadow rounded">
+  <thead class="bg-gray-200">
+    <tr>
+      <th class="py-2 px-4">Name</th>
+      <th class="py-2 px-4">Email</th>
+      <th class="py-2 px-4">Events</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for participant in participants %}
+      <tr class="border-b hover:bg-gray-50">
+        <td class="py-2 px-4">{{ participant.name }}</td>
+        <td class="py-2 px-4">{{ participant.email }}</td>
+        <td class="py-2 px-4">
+          {% for event in participant.events.all %}
+            {{ event.name }}{% if not forloop.last %}, {% endif %}
+          {% empty %}
+            No events
+          {% endfor %}
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="3" class="text-center py-4">No participants found.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
