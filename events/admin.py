@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, Participant, Category
+from .models import Event, Category
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -10,7 +10,7 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'date', 'time', 'location', 'category')
     list_filter = ('category', 'date')
 
-@admin.register(Participant)
-class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email')
-    filter_horizontal = ('events',)
+# @admin.register(User)
+# class ParticipantAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'email')
+#     filter_horizontal = ('events',)
