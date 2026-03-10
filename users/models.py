@@ -1,0 +1,27 @@
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from django.core.validators import RegexValidator
+
+class CustomUser(AbstractUser):
+
+    profile_picture = models.ImageField(
+        upload_to='profiles/',
+        default='profiles/default.jpg',
+        blank=True,
+        null=True
+    )
+
+    phone_number = models.CharField(
+        max_length=15,
+        validators=[
+            RegexValidator(
+                regex=r'^\+?\d{9,15}$',
+                message="Phone number must be entered in the format: '+999999999'."
+            )
+        ],
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.username

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'events',
     'tailwind',
     'theme',
+    'users',
   
   
 ]
@@ -146,11 +147,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = '/'  
-LOGIN_URL = '/login/'       
+LOGIN_URL = '/login/'      
+
+AUTH_USER_MODEL = 'users.CustomUser'

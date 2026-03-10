@@ -53,7 +53,7 @@
 
 # events/models.py
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -72,7 +72,7 @@ class Event(models.Model):
     
     # ManyToMany with User (RSVP system)
     participants = models.ManyToManyField(
-        User, 
+        settings.AUTH_USER_MODEL,
         related_name='rsvped_events', 
         blank=True
     )

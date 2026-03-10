@@ -37,6 +37,9 @@ from .views import (
 )
 from . import views
 from .views import UserListView
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     # Event URLs
     path('', EventListView.as_view(), name='event-list'),
@@ -73,4 +76,6 @@ urlpatterns = [
     path('dashboard/', views.participant_dashboard, name='dashboard'),
     path('admin-dashboard/', views.admin_dashboard, name='admin-dashboard'),
     path('users/', UserListView.as_view(), name='user-list'),
+   
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
